@@ -19,6 +19,7 @@ export function Component() {
   useEffect(() => {
     const newData = posts.filter((data) => {
       if (data.name) {
+        data.name = data.name.toUpperCase();
         return data.name.includes(search);
       }
     });
