@@ -1,0 +1,30 @@
+.nav_container{
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    background-color: rgb(165, 170, 180);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.nav_heading h1{
+    font-size: xx-large;
+    color: aliceblue;
+}
+#nav_input{
+    width: 200px;
+    height: 25px;
+    font-size: larger;
+    border-radius: 10px;
+    border: none;
+}
+.btns_div button{
+    width: auto;
+    height: 25px;
+    font-size: large;
+    background-color: violet;
+    color: aliceblue;
+    border: none;
+    border-radius: 10px;
+    margin: 3px;
+}

@@ -1,0 +1,17 @@
+.main_container{
+    width: 100%;
+    height: auto;
+}
+.item_container{
+    width: fit-content;
+    height: fit-content;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid chocolate;
+    border-radius: 10px;
+}
+.like_cmnt_share_btns_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

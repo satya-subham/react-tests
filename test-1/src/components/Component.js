@@ -14,13 +14,14 @@ export function Component() {
         setFilteredData([filteredData, ...response.data]);
       })
       .catch((err) => alert("Error"));
+      
   }, []);
+
 
   useEffect(() => {
     const newData = posts.filter((data) => {
       if (data.name) {
-        data.name = data.name.toUpperCase();
-        return data.name.includes(search);
+        return data.name.includes(search.toLowerCase());
       }
     });
     setFilteredData(newData);
