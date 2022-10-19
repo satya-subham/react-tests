@@ -1,3 +1,8 @@
+.loader_div{
+    width: 400px;
+    height: 400px;
+    margin: 200px 45%;
+}
 .main_container{
     width: 100%;
     height: auto;

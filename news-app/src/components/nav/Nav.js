@@ -1,8 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
 export function Nav(props) {
+    const [darkMode, setDarkMode] = useState(true);
+
+    const handleDarkMode = () =>{
+        if(darkMode){
+        setDarkMode(false)
+        const element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+    }
+    const handleLightMode = () =>{
+        setDarkMode(true)
+        const element = document.body;
+        element.classList.toggle("dark-mode");
+    }
   return (
     <>
     <nav>
@@ -18,6 +32,9 @@ export function Nav(props) {
                 <Link to='/about' target='_blank'><button>About</button></Link>
                 <Link to='/contact' target='_blank'><button>Contact Us</button></Link>
             </div>
+            {
+                    darkMode ? <i class="fa-regular fa-moon" onClick={handleDarkMode}></i> : <i class="fa-solid fa-moon" onClick={handleLightMode}></i>
+                }
         </div>
     </nav>
     </>
