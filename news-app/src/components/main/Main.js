@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import axios from "axios";
 import './Main.css'
-import { Nav } from '../nav/Nav'
 import { Footer } from '../footer/Footer';
 
 export function Main(props) {
+
   const [details, setDetails] = useState([]);
   const [filteredDetails, SetFilteredDetails] = useState([]);
   const [toggleLike, setToggleLike] = useState(true)
@@ -18,11 +18,10 @@ export function Main(props) {
     setLoading(true);
     setTimeout(()=>{
       setLoading(false)
-    }, 8000)
+    }, 4000)
   },[])
 
   useEffect(() => {
-    
     axios
       .get(
         `https://newsapi.org/v2/everything?q=apple&from=2022-10-15&to=2022-10-15&sortBy=popularity&apiKey=35a826be500b4b3a992bc826a4a7deda`
@@ -45,26 +44,37 @@ export function Main(props) {
   
   //===================================== Like functionality ===========================================
 
-  const handleLike = () =>{
-    if(toggleLike){
-      setToggleLike(false)
-    }
+  const handleLike = (e) =>{
+    filteredDetails.map((_, ind)=>{
+     if(e.target.id == ind){
+      const button = document.getElementById(ind);
+      button.classList.toggle('fa-solid')
+     }
+    })
   }
-  const handleDislike = () =>{
-    setToggleLike(true)
-  }
+
 
 
   // ====================================== COMMENT FUNCTIOALITY ==========================================
 
-  const addComments = () =>{
-    if(!comment){
-
-    }else{
-      setAllComments([...allComments, comment]);
-      setComment('')
+  const addComments = (e) =>{
+  filteredDetails.map((_, ind)=>{
+    if(e.target.id == ind){
+       setAllComments([...allComments,comment]);
+        setComment('')
     }
-    
+  })
+
+
+  // if(!comment){
+
+  // }else{
+  //  allComments.push([comment, id]);
+  //  setAllComments([...allComments,comment]);
+  //   setComment('')
+  // }
+
+
   }
 // ========================================== DELETE ARTICLES FUNCTIONALITY=====================================
   const deleteNews = (id) =>{
@@ -88,7 +98,6 @@ export function Main(props) {
       </div>
     :
     <>
-    <Nav/>
     <main>
     <div className="main_container">
       <div className="news_info">
@@ -105,22 +114,27 @@ export function Main(props) {
                 <h3>"{item.content}"</h3>
                 <h3>{item.description}</h3>
                 <h2>Comments</h2>
+                
                 {
                   allComments.map((ele, ind)=>{
                     return (
                       <div className="comments_div" key={ind}>
                           <p>{ele}</p>
+                         {/* if(ind == ele[1]){
+                          console.log(ele[1], ind, ele[0])
+                        } */}
                       </div>
                     )
                   })
                 }
                 <div className="like_cmnt_share_btns_div">
                   <div>
-                  {
+                  {/* {
                     toggleLike ? <button onClick={()=>handleLike(ind)}><i class="fa-regular fa-heart"></i></button> : <button onClick={handleDislike}><i class="fa-solid fa-heart"></i></button>
-                  }
+                  } */}
+                  <i className="fa-regular fa-heart" onClick={(e)=>handleLike(e)} id={ind}></i>
                   <input type='text' value={comment} placeholder="comment here..." onChange={(e)=>setComment(e.target.value)}/>
-                  <button onClick={()=>addComments(ind)}><i class="fa-solid fa-plus"></i></button>
+                  <button onClick={(e)=>addComments(e)} id={ind}><i className="fa-solid fa-plus"></i></button>
                   </div>
                   <div>
                   <button onClick={()=>deleteNews(ind)}>Remove article</button>

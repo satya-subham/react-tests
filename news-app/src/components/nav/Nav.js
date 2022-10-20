@@ -28,9 +28,9 @@ export function Nav(props) {
                 <input type='text' id='nav_input' onChange={(e)=>props.setSearch(e.target.value)} placeholder='search news'/>
             </div>
             <div className='btns_div'>
-                <Link to='/headlines' target='_blank'><button>Headlines</button></Link>
-                <Link to='/about' target='_blank'><button>About</button></Link>
-                <Link to='/contact' target='_blank'><button>Contact Us</button></Link>
+                <Link to='/headlines'><button>Headlines</button></Link>
+                <Link to='/about'><button>About</button></Link>
+                <Link to='/contact'><button>Contact Us</button></Link>
             </div>
             {
                     darkMode ? <i class="fa-regular fa-moon" onClick={handleDarkMode}></i> : <i class="fa-solid fa-moon" onClick={handleLightMode}></i>

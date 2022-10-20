@@ -1,5 +1,5 @@
 import './App.css';
-// import { Nav } from './components/nav/Nav'
+import { Nav } from './components/nav/Nav'
 import { Main } from './components/main/Main'
 import { Headlines } from './components/headlines/Headlines';
 import { AboutUs } from './components/about/AboutUs'
@@ -12,9 +12,9 @@ function App() {
   const [search, setSearch] = useState('')
   return (
     <>
-      {/* <Routes>
+      <Routes>
       <Route path='/' element={<Nav setSearch={setSearch}/>}/>
-      </Routes> */}
+      </Routes>
       <Routes>
       <Route path='/' element={<Main search={search}/>}/>
       <Route path='/headlines' element={<Headlines/>}/>
