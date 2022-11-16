@@ -3,6 +3,7 @@ import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import axios from "axios";
 import './Main.css'
 import { Footer } from '../footer/Footer';
+import { Comment } from "../comments/Comment";
 
 export function Main(props) {
 
@@ -10,8 +11,7 @@ export function Main(props) {
   const [filteredDetails, SetFilteredDetails] = useState([]);
   const [toggleLike, setToggleLike] = useState(true)
   
-  const [comment, setComment] = useState('');
-  const [allComments, setAllComments] = useState([]);
+  
 
   const [loading, setLoading] = useState(false);
   useEffect(()=>{
@@ -53,29 +53,7 @@ export function Main(props) {
     })
   }
 
-
-
-  // ====================================== COMMENT FUNCTIOALITY ==========================================
-
-  const addComments = (e) =>{
-  filteredDetails.map((_, ind)=>{
-    if(e.target.id == ind){
-       setAllComments([...allComments,comment]);
-        setComment('')
-    }
-  })
-
-
-  // if(!comment){
-
-  // }else{
-  //  allComments.push([comment, id]);
-  //  setAllComments([...allComments,comment]);
-  //   setComment('')
-  // }
-
-
-  }
+  
 // ========================================== DELETE ARTICLES FUNCTIONALITY=====================================
   const deleteNews = (id) =>{
     let updatedNews = filteredDetails.filter((ele, ind)=>{
@@ -113,31 +91,18 @@ export function Main(props) {
                 <h3>{item.title}</h3>
                 <h3>"{item.content}"</h3>
                 <h3>{item.description}</h3>
-                <h2>Comments</h2>
                 
-                {
-                  allComments.map((ele, ind)=>{
-                    return (
-                      <div className="comments_div" key={ind}>
-                          <p>{ele}</p>
-                         {/* if(ind == ele[1]){
-                          console.log(ele[1], ind, ele[0])
-                        } */}
-                      </div>
-                    )
-                  })
-                }
                 <div className="like_cmnt_share_btns_div">
                   <div>
                   {/* {
                     toggleLike ? <button onClick={()=>handleLike(ind)}><i class="fa-regular fa-heart"></i></button> : <button onClick={handleDislike}><i class="fa-solid fa-heart"></i></button>
                   } */}
                   <i className="fa-regular fa-heart" onClick={(e)=>handleLike(e)} id={ind}></i>
-                  <input type='text' value={comment} placeholder="comment here..." onChange={(e)=>setComment(e.target.value)}/>
-                  <button onClick={(e)=>addComments(e)} id={ind}><i className="fa-solid fa-plus"></i></button>
+                  <Comment/>
                   </div>
                   <div>
                   <button onClick={()=>deleteNews(ind)}>Remove article</button>
+                  
                   </div>
                 </div>
             </div>
