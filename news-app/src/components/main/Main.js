@@ -25,8 +25,8 @@ export function Main(props) {
     axios
       .get(
         // `https://newsapi.org/v2/everything?q=tesla&from=2022-12-16&sortBy=publishedAt&apiKey=35a826be500b4b3a992bc826a4a7deda`
-        // `https://newsapi-z4r7.onrender.com/news?q=everything`
-        `https://newsapi-z4r7.onrender.com/news?q=politics`
+        `https://newsapi-z4r7.onrender.com/news?q=everything`
+        // `https://newsapi-z4r7.onrender.com/news?q=politics`
       )
       .then((response) => {
         setDetails([...response.data["articles"]]);
