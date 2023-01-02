@@ -6,13 +6,17 @@
 .main_container{
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .item_container{
-    width: fit-content;
+    width: 60%;
     height: fit-content;
     margin: 20px;
     padding: 20px;
-    border: 2px solid chocolate;
+    border: 2px solid rgb(165, 170, 180);
     border-radius: 10px;
 }
 .like_cmnt_share_btns_div{
