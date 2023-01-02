@@ -24,12 +24,12 @@ export function Main(props) {
   useEffect(() => {
     axios
       .get(
-        `https://newsapi.org/v2/everything?q=apple&from=2022-10-15&to=2022-10-15&sortBy=popularity&apiKey=35a826be500b4b3a992bc826a4a7deda`
+        `https://newsapi.org/v2/everything?q=tesla&from=2022-12-16&sortBy=publishedAt&apiKey=35a826be500b4b3a992bc826a4a7deda`
       )
       .then((response) => {
         setDetails([...response.data["articles"]]);
         SetFilteredDetails([...response.data["articles"]]);
-      }).catch((err)=> alert('error'))
+      })
   }, []);
 
   useEffect(() => {
